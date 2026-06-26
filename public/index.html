@@ -4,232 +4,266 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo Automotivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .container {
-      max-width: 1000px;
+    /* MAIN */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 40px;
+      max-width: 700px;
+      width: 100%;
       margin: 0 auto;
-      background: white;
-      padding: 40px;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e02020;
+      margin-bottom: 16px;
     }
 
     h1 {
-      color: #333;
-      font-size: 28px;
-      margin-bottom: 8px;
-      font-weight: normal;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      color: #fff;
+      margin-bottom: 10px;
     }
 
-    .subtitle {
-      color: #999;
-      font-size: 13px;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    h1 .dim { color: #555; }
+
+    .desc {
+      font-size: 14px;
+      color: #888;
+      font-weight: 300;
+      margin-bottom: 48px;
+      line-height: 1.6;
     }
 
-    .form-group {
-      margin-bottom: 20px;
+    /* INPUT */
+    .search-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .search-row {
+      display: flex;
+      gap: 0;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .search-row:focus-within {
+      border-color: #e02020;
+      box-shadow: 0 0 0 3px rgba(224,32,32,0.12);
     }
 
     input {
-      width: 100%;
-      max-width: 400px;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 2px;
-      font-size: 14px;
-      font-family: Arial, sans-serif;
+      flex: 1;
+      background: #151515;
+      border: none;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      padding: 16px 20px;
+      outline: none;
     }
 
-    input:focus {
-      outline: none;
-      border-color: #333;
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
-    }
+    input::placeholder { color: #555; }
 
     button {
-      background: #333;
-      color: white;
-      padding: 12px 30px;
+      background: #e02020;
+      color: #fff;
       border: none;
-      border-radius: 2px;
-      cursor: pointer;
+      padding: 16px 28px;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
+      font-weight: 600;
       letter-spacing: 0.5px;
-      transition: background 0.2s;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
     }
 
-    button:hover {
-      background: #555;
-    }
+    button:hover { background: #c41a1a; }
+    button:active { background: #a81515; }
+    button:disabled { background: #2a2a2a; color: #444; cursor: not-allowed; }
 
-    button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-
-    .resultado-container {
-      margin-top: 50px;
+    /* ERRO */
+    .erro {
       display: none;
+      font-size: 13px;
+      color: #e05050;
+      padding: 10px 14px;
+      background: #1a0d0d;
+      border: 1px solid #3a1515;
+      border-radius: 8px;
     }
+    .erro.on { display: block; }
 
-    .resultado-container.active {
-      display: block;
+    /* RESULTADO */
+    .resultado {
+      display: none;
+      margin-top: 48px;
     }
+    .resultado.on { display: block; }
 
     .resultado-header {
-      border-bottom: 2px solid #333;
-      padding-bottom: 15px;
-      margin-bottom: 25px;
-    }
-
-    .resultado-header h2 {
-      color: #333;
-      font-size: 20px;
-      font-weight: normal;
-    }
-
-    .resultado-content {
-      color: #555;
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    .resultado-content p {
-      margin-bottom: 15px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-
-    .loading {
-      color: #999;
-      font-style: italic;
-      margin-top: 15px;
-    }
-
-    .error {
-      background: #fff3cd;
-      border-left: 4px solid #ff6b6b;
-      padding: 15px;
-      margin-top: 20px;
-      font-size: 13px;
-      color: #856404;
-      display: none;
-    }
-
-    .error.active {
-      display: block;
-    }
-
-    .campo-entrada {
       display: flex;
-      gap: 10px;
-      align-items: flex-start;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    input[type="text"] {
-      flex: 1;
-      max-width: 100%;
+    .red-line {
+      width: 3px;
+      height: 20px;
+      background: #e02020;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .resultado-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666;
+      background: #111;
+      border: 1px solid #1f1f1f;
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    #texto {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #ccc;
+      white-space: pre-wrap;
+      font-weight: 300;
+    }
+
+    /* LOADING */
+    .carregando {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #e02020;
+      animation: blink 1.2s infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.2; }
+      40% { opacity: 1; }
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 20px 40px;
+      border-top: 1px solid #1a1a1a;
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Catálogo Automotivo</h1>
-    <p class="subtitle">Consulta de Especificações Técnicas</p>
 
-    <form onsubmit="consultar(event)">
-      <div class="form-group">
-        <label for="modelo">Modelo do Veículo</label>
-        <div class="campo-entrada">
-          <input type="text" id="modelo" placeholder="Ex: Fiat Uno 2024" required>
-          <button type="submit" id="btnEnviar">Pesquisar</button>
-        </div>
+  <main>
+    <p class="eyebrow">Consulta Inteligente</p>
+    <h1>Catálogo<br><span class="dim">Técnico Automotivo Inteligente</span></h1>
+    <p class="desc">Digite o modelo e ano para consultar especificações completas.</p>
+
+    <div class="search-group">
+      <div class="search-row">
+        <input type="text" id="modelo" placeholder="Ex: Honda Civic 2024" autocomplete="off">
+        <button id="btn" onclick="consultar()">Pesquisar</button>
       </div>
-    </form>
-
-    <div class="error" id="erro"></div>
-
-    <div class="resultado-container" id="resultadoContainer">
-      <div class="resultado-header">
-        <h2>Resultado</h2>
-      </div>
-      <div class="resultado-content" id="resultado"></div>
+      <div class="erro" id="erro"></div>
     </div>
-  </div>
+
+    <div class="resultado" id="resultado">
+      <div class="resultado-header">
+        <div class="red-line"></div>
+        <span class="resultado-label">Resultado</span>
+      </div>
+      <div class="resultado-body">
+        <div id="texto"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Dados gerados via IA · Confirme com o fabricante</footer>
 
   <script>
-    async function consultar(event) {
-      event.preventDefault();
+    document.getElementById('modelo').addEventListener('keydown', e => {
+      if (e.key === 'Enter') consultar();
+    });
 
+    async function consultar() {
       const modelo = document.getElementById('modelo').value.trim();
-      const resultadoContainer = document.getElementById('resultadoContainer');
-      const resultado = document.getElementById('resultado');
+      const btn = document.getElementById('btn');
       const erro = document.getElementById('erro');
-      const btnEnviar = document.getElementById('btnEnviar');
+      const resultado = document.getElementById('resultado');
+      const texto = document.getElementById('texto');
 
-      if (!modelo) {
-        erro.textContent = 'Por favor, digite o modelo e ano do veículo.';
-        erro.classList.add('active');
-        return;
-      }
+      if (!modelo) return;
 
-      erro.classList.remove('active');
-      resultadoContainer.classList.remove('active');
-      btnEnviar.disabled = true;
-
-      resultado.innerHTML = '<div class="loading">Carregando...</div>';
-      resultadoContainer.classList.add('active');
+      erro.classList.remove('on');
+      btn.disabled = true;
+      texto.innerHTML = '<div class="carregando"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+      resultado.classList.add('on');
 
       try {
-        const response = await fetch('/api/llm', {
+        const res = await fetch('/api/llm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: modelo })
         });
 
-        const data = await response.json();
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.erro || 'Erro desconhecido');
 
-        if (!response.ok) {
-          throw new Error(data.erro || 'Erro desconhecido');
-        }
-
-        resultado.innerHTML = `<p>${data.resposta}</p>`;
+        texto.textContent = data.resposta;
         document.getElementById('modelo').value = '';
-      } catch (error) {
-        erro.textContent = `Erro: ${error.message}`;
-        erro.classList.add('active');
-        resultadoContainer.classList.remove('active');
+      } catch (err) {
+        erro.textContent = err.message;
+        erro.classList.add('on');
+        resultado.classList.remove('on');
       } finally {
-        btnEnviar.disabled = false;
+        btn.disabled = false;
       }
     }
   </script>
+
 </body>
 </html>
