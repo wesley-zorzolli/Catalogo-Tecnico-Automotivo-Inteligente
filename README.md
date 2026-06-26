@@ -1,6 +1,6 @@
 # 🚗 Catálogo Técnico Automotivo Inteligente
 
-## � Objetivo
+## 📝 Objetivo
 
 Este projeto implementa um **catálogo técnico automotivo inteligente** que utiliza um modelo de linguagem (LLM) via API OpenRouter para fornecer fichas técnicas completas de veículos. O sistema recebe o modelo e ano de um carro e retorna informações estruturadas sobre motorização, consumo, itens de série e pontos fortes/fracos.
 
