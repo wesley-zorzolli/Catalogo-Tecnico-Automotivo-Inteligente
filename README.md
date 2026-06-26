@@ -135,7 +135,7 @@ npm run dev
 
 ## 📄 Licença
 
-Projeto educacional para a disciplina de Fundamentos de Inteligência Artificial (ADS)
+Projeto educacional para a disciplina de Inteligência Artificial (ADS)
 
 ## 👨‍💻 Autor
 
