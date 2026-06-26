@@ -94,10 +94,12 @@ O servidor iniciará em `http://localhost:3000`
 ## 🎨 Design
 
 A interface utiliza uma paleta de cores automotiva:
-- **Fundo:** Grafite escuro (#1a1a1a)
-- **Acentos:** Vermelho esportivo (#dc143c)
-- **Texto:** Cinza claro (#a9a9a9)
-- **Mensagens:** Balões animados com gradientes
+* Fundo: Preto profundo (#0d0d0d)
+* Acentos: Vermelho (#e02020)
+* Texto primário: Branco (#f0f0f0)
+* Texto secundário: Cinza médio (#888)
+* Tipografia: Inter (300–700)
+* Input: Borda com foco em vermelho e glow sutil
 
 ## 🔐 Segurança
 
