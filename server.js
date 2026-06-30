@@ -60,7 +60,7 @@ app.post("/api/llm", async (req, res) => {
             content: prompt
           }
         ],
-        temperature: 0.7,
+        temperature: 0.2,
         max_completion_tokens: 1000
       })
     });

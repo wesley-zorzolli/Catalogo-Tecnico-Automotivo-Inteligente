@@ -73,7 +73,7 @@ O servidor iniciará em `http://localhost:3000`
 
 1. Abra o navegador em `http://localhost:3000`
 2. Digite o modelo e ano do veículo (ex: "Chevrolet Onix 2023")
-3. Clique em "Enviar" ou pressione Enter
+3. Clique em "Pesquisar" ou pressione Enter
 4. Aguarde a resposta com a ficha técnica completa
 
 ## 🔍 Exemplos de Consultas
@@ -119,7 +119,7 @@ A interface utiliza uma paleta de cores automotiva:
 
 ## 📝 Desenvolvimento
 
-Para modo desenvolvimento com reload automático, você pode usar:
+Para rodar o servidor em modo alternativo:
 ```bash
 npm run dev
 ```

@@ -160,8 +160,42 @@
       font-size: 14px;
       line-height: 1.85;
       color: #ccc;
-      white-space: pre-wrap;
       font-weight: 300;
+    }
+
+    #texto table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    #texto th, #texto td {
+      padding: 10px 14px;
+      border: 1px solid #2a2a2a;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    #texto th {
+      background: #1a1a1a;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    #texto tr:nth-child(even) td {
+      background: #111;
+    }
+
+    #texto p:last-of-type {
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: #111;
+      border-left: 3px solid #e02020;
+      border-radius: 0 8px 8px 0;
+      color: #ccc;
+      line-height: 1.7;
     }
 
     /* LOADING */
@@ -224,6 +258,7 @@
 
   <footer>Dados gerados via IA · Confirme com o fabricante</footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     document.getElementById('modelo').addEventListener('keydown', e => {
       if (e.key === 'Enter') consultar();
@@ -253,7 +288,7 @@
         const data = await res.json();
         if (!res.ok) throw new Error(data.erro || 'Erro desconhecido');
 
-        texto.textContent = data.resposta;
+        texto.innerHTML = marked.parse(data.resposta);
         document.getElementById('modelo').value = '';
       } catch (err) {
         erro.textContent = err.message;
