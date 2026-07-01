@@ -83,6 +83,7 @@ O servidor iniciará em `http://localhost:3000`
 - "Volkswagen Gol 2023"
 - "Renault Kwid 2023"
 - "Honda Civic 2023"
+- "Fiat Fastback 2024"
 
 ## ⚙️ Validações
 
