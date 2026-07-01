@@ -30,6 +30,7 @@ Este projeto implementa um **catálogo técnico automotivo inteligente** que uti
 ```
 Catálogo_inteligente/
 ├── package.json          # Dependências e scripts
+├── package-lock.json     # Arquivo gerado pelo npm install; registra as versões exatas das dependências
 ├── .env                  # Variáveis de ambiente (NÃO versionado)
 ├── .gitignore            # Arquivos ignorados no Git
 ├── server.js             # Servidor Express com rota /api/llm
