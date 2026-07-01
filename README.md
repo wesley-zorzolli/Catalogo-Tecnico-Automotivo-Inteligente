@@ -133,10 +133,6 @@ npm run dev
 - ✓ Como usar LLMs dentro de uma aplicação web
 - ✓ Como estruturar prompts para obter respostas formatadas
 
-## 📄 Licença
-
-Projeto educacional para a disciplina de Inteligência Artificial (ADS)
-
 ## 👨‍💻 Autor
 
 Desenvolvido como atividade prática de LLM via OpenRouter
